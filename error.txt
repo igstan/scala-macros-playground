@@ -1,0 +1,63 @@
+[info] Compiling 1 Scala source to /Users/igstan/Desktop/macros/core/target/scala-2.11/classes...
+performing macro expansion ro.igstan.macros.StringEnum.Enum[String]({
+  ((name: String) => Main.this.factory(name))
+}, "Joey", "Johnny", "Tommy") at source-/Users/igstan/Desktop/macros/core/src/scala/Main.scala,line-16,offset=358
+ {
+  def <init>() = {
+    super.<init>();
+    ()
+  };
+  val Joey = {
+    ((name: String) => Main.this.factory(name))
+  }("Joey");
+  val Johnny = {
+    ((name: String) => Main.this.factory(name))
+  }("Johnny");
+  val Tommy = {
+    ((name: String) => Main.this.factory(name))
+  }("Tommy")
+}
+Template(List(), emptyValDef, List(DefDef(Modifiers(), nme.CONSTRUCTOR, List(), List(List()), TypeTree(), Block(List(pendingSuperCall), Literal(Constant(())))), ValDef(Modifiers(), TermName("Joey"), TypeTree(), Apply(Block(List(), Function(List(ValDef(Modifiers(PARAM | SYNTHETIC), TermName("name"), TypeTree(), EmptyTree)), Apply(Select(This(TypeName("Main")), TermName("factory")), List(Ident(TermName("name")))))), List(Literal(Constant("Joey"))))), ValDef(Modifiers(), TermName("Johnny"), TypeTree(), Apply(Block(List(), Function(List(ValDef(Modifiers(PARAM | SYNTHETIC), TermName("name"), TypeTree(), EmptyTree)), Apply(Select(This(TypeName("Main")), TermName("factory")), List(Ident(TermName("name")))))), List(Literal(Constant("Johnny"))))), ValDef(Modifiers(), TermName("Tommy"), TypeTree(), Apply(Block(List(), Function(List(ValDef(Modifiers(PARAM | SYNTHETIC), TermName("name"), TypeTree(), EmptyTree)), Apply(Select(This(TypeName("Main")), TermName("factory")), List(Ident(TermName("name")))))), List(Literal(Constant("Tommy")))))))
+
+     while compiling: /Users/igstan/Desktop/macros/core/src/scala/Main.scala
+        during phase: global=lambdalift, enteringPhase=constructors
+     library version: version 2.11.0-20130521-221431-39227d0382
+    compiler version: version 2.11.0-20130521-221431-39227d0382
+  reconstructed args: -Ymacro-debug-lite -d /Users/igstan/Desktop/macros/core/target/scala-2.11/classes -deprecation -feature -classpath /Users/igstan/Desktop/macros/core/target/scala-2.11/classes:/Users/igstan/Desktop/macros/macros/target/scala-2.11/classes:/Users/igstan/.ivy2/cache/org.scala-lang.macro-paradise/scala-reflect/jars/scala-reflect-2.11.0-SNAPSHOT.jar -unchecked -bootclasspath /Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/resources.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/rt.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/sunrsasign.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/jsse.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/jce.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/charsets.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/jfr.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/lib/JObjC.jar:/Library/Java/JavaVirtualMachines/jdk1.7.0_21.jdk/Contents/Home/jre/classes:/Users/igstan/.sbt/boot/org.scala-lang.macro-paradise.scala-2.11.0-SNAPSHOT/lib/scala-library.jar
+
+  last tree to typer: term Tommy
+              symbol: value Tommy in object Ramones (flags: <triedcooking> private[this])
+   symbol definition: private[this] val Tommy: String
+                 tpe: <notype>
+       symbol owners: value Tommy -> object Ramones -> object Main -> package core
+      context owners: value name -> method apply -> anonymous class $anonfun -> object Main -> package core
+
+== Enclosing template or block ==
+
+DefDef( // final def apply(name: String): String
+  <method> final
+  "apply"
+  []
+  // 1 parameter list
+  ValDef( // name: String
+    <param> <synthetic> <triedcooking>
+    "name"
+    <tpt> // tree.tpe=String
+    <empty>
+  )
+  <tpt> // tree.tpe=String
+  Apply( // def factory(name: String): String in object Main, tree.tpe=String
+    Main.this."factory" // def factory(name: String): String in object Main, tree.tpe=(name: String)String
+    "name" // name: String, tree.tpe=String
+  )
+)
+
+== Expanded type of tree ==
+
+<notype>
+
+unhandled exception while transforming Main.scala
+[error] uncaught exception during compilation: IllegalArgumentException("Could not find proxy for name: String in List(value name, method apply, anonymous class $anonfun, object Main, package core, package igstan, package ro, package <root>) (currentOwner= method apply )") @ scala.tools.nsc.transform.LambdaLift$LambdaLifter.scala$tools$nsc$transform$LambdaLift$LambdaLifter$$searchIn$1(LambdaLift.scala:317)
+[trace] Stack trace suppressed: run last core/compile:compile for the full output.
+[error] (core/compile:compile) java.lang.IllegalArgumentException: Could not find proxy for name: String in List(value name, method apply, anonymous class $anonfun, object Main, package core, package igstan, package ro, package <root>) (currentOwner= method apply )
+[error] Total time: 6 s, completed May 24, 2013 2:22:45 PM

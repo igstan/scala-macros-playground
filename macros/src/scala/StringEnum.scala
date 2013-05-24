@@ -4,7 +4,7 @@ import scala.language.experimental.macros
 import scala.reflect.macros.Context
 
 object StringEnum {
-  def impl(c: Context)(vals: c.Expr[String]*) = {
+  def impl[A](c: Context)(factory: c.Expr[String => A], vals: c.Expr[String]*) = {
     import c.universe._
 
     // A `Template` is whatever comes after the `extends` keyword when you
@@ -20,7 +20,6 @@ object StringEnum {
     //
     val Template(parents, self, ctor :: defs) = c.enclosingTemplate
 
-
     // Now, we're just mapping over the list of names we've passed to `Enum`
     // in order to transform them into `val` definitions.
     val values = vals.map { valName =>
@@ -28,13 +27,14 @@ object StringEnum {
       // extract the actual string name from it. In this case we're using
       // pattern matching in assignment.
       val Expr(Literal(Constant(name: String))) = valName
+      val Expr(fn) = factory
 
       // Finally, we're building the AST for the `val` definition
       ValDef(
         mods = Modifiers(),
         name = TermName(name),
         tpt  = TypeTree(),
-        rhs  = Literal(Constant(name))
+        rhs  = Apply(fn, List(Literal(Constant(name))))
       )
     }
 
@@ -43,5 +43,5 @@ object StringEnum {
     Template(Nil, emptyValDef, ctor :: defs ++ values)
   }
 
-  type Enum(vals: String*) = macro impl
+  type Enum[A](factory: String => A, vals: String*) = macro impl[A]
 }

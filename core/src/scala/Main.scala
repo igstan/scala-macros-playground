@@ -4,14 +4,16 @@ import ro.igstan.macros.StringEnum.Enum
 
 object Main {
 
-  // The Enum macro will generate the equivalent of this:
+  def factory(name: String) = s"$name Ramones"
+
+  // The Enum macro should generate the equivalent of this:
   //
   // object Ramones {
-  //   val Joey   = "Joey"
-  //   val Johnny = "Johnny"
-  //   val Tommy  = "Tommy"
+  //   val Joey   = factory("Joey")
+  //   val Johnny = factory("Johnny")
+  //   val Tommy  = factory("Tommy")
   // }
-  object Ramones extends Enum("Joey", "Johnny", "Tommy")
+  object Ramones extends Enum(factory, "Joey", "Johnny", "Tommy")
 
   def main(args: Array[String]): Unit = {
     println(Ramones.Joey)
