@@ -27,14 +27,14 @@ object StringEnum {
       // extract the actual string name from it. In this case we're using
       // pattern matching in assignment.
       val Expr(Literal(Constant(name: String))) = valName
-      val Expr(fn) = factory
+      val fn = c.resetAllAttrs(factory.tree)
 
       // Finally, we're building the AST for the `val` definition
       ValDef(
         mods = Modifiers(),
         name = TermName(name),
         tpt  = TypeTree(),
-        rhs  = Apply(c.resetAllAttrs(fn), List(Literal(Constant(name))))
+        rhs  = Apply(fn, List(Literal(Constant(name))))
       )
     }
 
