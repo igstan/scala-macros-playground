@@ -13,7 +13,7 @@ object Main {
   //   val Johnny = factory("Johnny")
   //   val Tommy  = factory("Tommy")
   // }
-  object Ramones extends Enum(factory, "Joey", "Johnny", "Tommy")
+  object Ramones extends Enum[String](factory, "Joey", "Johnny", "Tommy")
 
   def main(args: Array[String]): Unit = {
     println(Ramones.Joey)

@@ -34,7 +34,7 @@ object StringEnum {
         mods = Modifiers(),
         name = TermName(name),
         tpt  = TypeTree(),
-        rhs  = Apply(fn, List(Literal(Constant(name))))
+        rhs  = Apply(c.resetAllAttrs(fn), List(Literal(Constant(name))))
       )
     }
 
