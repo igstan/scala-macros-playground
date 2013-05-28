@@ -22,11 +22,11 @@ object StringEnum {
 
     // Now, we're just mapping over the list of names we've passed to `Enum`
     // in order to transform them into `val` definitions.
-    val values = vals.map { valName =>
+    val values = vals.map { value =>
       // Each name is the AST representation of a String, so we have to
       // extract the actual string name from it. In this case we're using
       // pattern matching in assignment.
-      val Expr(Literal(Constant(name: String))) = valName
+      val Expr(Literal(Constant(name: String))) = value
       val fn = c.resetAllAttrs(factory.tree)
 
       // Finally, we're building the AST for the `val` definition
