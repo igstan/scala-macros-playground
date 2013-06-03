@@ -9,8 +9,14 @@ object Demo {
   def impl(c: Context)(x: c.Expr[Int], args: c.Expr[String]*) = {
     import c.universe._
 
-    // q"new Demo($x.toString, List(..$args))"
-    // or
+    // For:
+    //
+    //   class Demo(val y: String, val args: List[String])
+    //
+    // you'd need this quasiquote:
+    //
+    //   q"new Demo($x.toString, List(..$args))"
+    //
 
     q"new Demo($x.toString, ..$args)"
   }
